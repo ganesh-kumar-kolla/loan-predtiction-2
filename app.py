@@ -6,7 +6,7 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 @app.route('/')
 def home():
-    return render_template('loan_web.html')
+    return render_template('index.html')
 @app.route('/predict',methods=['POST'])
 def predict():
 
@@ -16,7 +16,7 @@ def predict():
 
     output = round(prediction[0], 2)
 
-    return render_template('loan_web.html', prediction_text='PROBABILITY THAT YOUR LOAN WILL GET APPROVED IS : {}'.format(output))
+    return render_template('index.html', prediction_text='PROBABILITY THAT YOUR LOAN WILL GET APPROVED IS : {}'.format(output))
 
 @app.route('/results',methods=['POST'])
 def results():
